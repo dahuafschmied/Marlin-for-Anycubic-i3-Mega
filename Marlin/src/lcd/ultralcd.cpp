@@ -117,10 +117,9 @@ uint8_t lcd_status_update_delay = 1, // First update one loop delayed
 // The main status screen
 void lcd_status_screen();
 
-millis_t next_lcd_update_ms;
-
-uint8_t lcdDrawUpdate = LCDVIEW_CLEAR_CALL_REDRAW; // Set when the LCD needs to draw, decrements after every draw. Set to 2 in LCD routines so the LCD gets at least 1 full redraw (first redraw is partial)
+LCDViewAction lcdDrawUpdate = LCDVIEW_CLEAR_CALL_REDRAW;
 uint16_t max_display_update_time = 0;
+millis_t next_lcd_update_ms;
 
 #if ENABLED(ULTIPANEL)
 
@@ -509,6 +508,9 @@ uint16_t max_display_update_time = 0;
 
   inline bool printer_busy() { return planner.movesplanned() || IS_SD_PRINTING; }
 
+  void lcd_move_z();
+  float move_menu_scale;
+
   /**
    * General function to go directly to a screen
    */
@@ -528,14 +530,23 @@ uint16_t max_display_update_time = 0;
           if (currentScreen == lcd_status_screen)
             doubleclick_expire_ms = millis() + DOUBLECLICK_MAX_INTERVAL;
         }
-        else if (screen == lcd_status_screen && currentScreen == lcd_main_menu && PENDING(millis(), doubleclick_expire_ms)/* && printer_busy()*/)
-          screen =
-            #if ENABLED(BABYSTEP_ZPROBE_OFFSET)
-              lcd_babystep_zoffset
-            #else
-              lcd_babystep_z
-            #endif
-          ;
+        else if (screen == lcd_status_screen && currentScreen == lcd_main_menu && PENDING(millis(), doubleclick_expire_ms)) {
+          if (printer_busy()) {
+            screen =
+              #if ENABLED(BABYSTEP_ZPROBE_OFFSET)
+                lcd_babystep_zoffset
+              #else
+                lcd_babystep_z
+              #endif
+            ;
+          }
+          #if ENABLED(MOVE_Z_WHEN_IDLE)
+            else {
+              move_menu_scale = MOVE_Z_IDLE_MULTIPLICATOR;
+              screen = lcd_move_z;
+            }
+          #endif
+        }
       #endif
 
       currentScreen = screen;
@@ -1331,11 +1342,12 @@ void lcd_quick_feedback(const bool clear_buttons) {
         }
         if (lcdDrawUpdate) {
           #if ENABLED(BABYSTEP_HOTEND_Z_OFFSET)
-            if (do_probe)
-              lcd_implementation_drawedit(PSTR(MSG_ZPROBE_ZOFFSET), ftostr43sign(zprobe_zoffset));
-            else
+            if (!do_probe)
               lcd_implementation_drawedit(PSTR(MSG_IDEX_Z_OFFSET), ftostr43sign(hotend_offset[Z_AXIS][active_extruder]));
+            else
           #endif
+              lcd_implementation_drawedit(PSTR(MSG_ZPROBE_ZOFFSET), ftostr43sign(zprobe_zoffset));
+
           #if ENABLED(BABYSTEP_ZPROBE_GFX_OVERLAY)
             if (do_probe) _lcd_zoffset_overlay_gfx(zprobe_zoffset);
           #endif
@@ -2849,11 +2861,7 @@ void lcd_quick_feedback(const bool clear_buttons) {
     END_MENU();
   }
 
-  float move_menu_scale;
-
   #if ENABLED(DELTA_CALIBRATION_MENU) || ENABLED(DELTA_AUTO_CALIBRATION)
-
-    void lcd_move_z();
 
     void _man_probe_pt(const float &rx, const float &ry) {
       do_blocking_move_to_z(Z_CLEARANCE_BETWEEN_PROBES);
