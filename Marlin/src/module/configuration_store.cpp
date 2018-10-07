@@ -72,6 +72,9 @@
 
 #if HAS_SERVOS
   #include "servo.h"
+#else
+  #undef NUM_SERVOS
+  #define NUM_SERVOS NUM_SERVO_PLUGS
 #endif
 
 #if HAS_BED_PROBE
