@@ -156,10 +156,10 @@
 // For Cyclops or any "multi-extruder" that shares a single nozzle.
 //#define SINGLENOZZLE
 #if ENABLED(SINGLENOZZLE)
-  // Length of filament to retract and prime on toolchange
-  //#define SINGLENOZZLE_SWAP_LENGTH 12.0
-  //#define SINGLENOZZLE_SWAP_RETRACT_SPEED 3600  // (mm/m)
-  //#define SINGLENOZZLE_SWAP_PRIME_SPEED   3600  // (mm/m)
+  // Parameters for filament retract / prime on toolchange
+  #define SINGLENOZZLE_SWAP_LENGTH          12  // (mm)
+  #define SINGLENOZZLE_SWAP_RETRACT_SPEED 3600  // (mm/m)
+  #define SINGLENOZZLE_SWAP_PRIME_SPEED   3600  // (mm/m)
   //#define SINGLENOZZLE_SWAP_PARK
   #define SINGLENOZZLE_TOOLCHANGE_ZRAISE     2  // (mm)
   #if ENABLED(SINGLENOZZLE_SWAP_PARK)
@@ -413,7 +413,7 @@
 
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
-  // mein i3 Mega mit Socke
+  // my i3 Mega with sock
   #define DEFAULT_Kp 13.96
   #define DEFAULT_Ki 0.82
   #define DEFAULT_Kd 59.16
@@ -1842,6 +1842,15 @@
 // http://github.com/android444/Silvergate
 //
 //#define SILVER_GATE_GLCD_CONTROLLER
+
+//	
+// Extensible UI	
+//	
+// Enable third-party or vendor customized user interfaces that aren't	
+// packaged with Marlin. Source code for the user interface will need to	
+// be placed in "src/lcd/extensible_ui/lib"	
+//	
+//#define EXTENSIBLE_UI	
 
 //=============================================================================
 //============================  Other Controllers  ============================
