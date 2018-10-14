@@ -164,6 +164,7 @@
   #if ENABLED(SINGLENOZZLE_SWAP_PARK)
     #define SINGLENOZZLE_TOOLCHANGE_XY    { X_MIN_POS + 10, Y_MIN_POS + 10 }
     #define SINGLENOZZLE_PARK_XY_FEEDRATE 6000  // (mm/m)
+  #endif
 #endif
 
 /**
