@@ -606,7 +606,8 @@
 //#define Y2_DRIVER_TYPE A4988
 #define Z2_DRIVER_TYPE TMC2208_STANDALONE
 //#define Z3_DRIVER_TYPE A4988
-#define E0_DRIVER_TYPE TMC2208_STANDALONE
+//#define E0_DRIVER_TYPE TMC2208_STANDALONE
+#define E0_DRIVER_TYPE A4988
 //#define E1_DRIVER_TYPE A4988
 //#define E2_DRIVER_TYPE A4988
 //#define E3_DRIVER_TYPE A4988
@@ -908,7 +909,7 @@
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR true
+#define INVERT_E0_DIR false
 #define INVERT_E1_DIR false
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
@@ -1077,11 +1078,11 @@
   /**
    * Enable the G26 Mesh Validation Pattern tool.
    */
-  //#define G26_MESH_VALIDATION
+  #define G26_MESH_VALIDATION
   #if ENABLED(G26_MESH_VALIDATION)
     #define MESH_TEST_NOZZLE_SIZE    0.4  // (mm) Diameter of primary nozzle.
     #define MESH_TEST_LAYER_HEIGHT   0.2  // (mm) Default layer height for the G26 Mesh Validation Tool.
-    #define MESH_TEST_HOTEND_TEMP  205.0  // (°C) Default nozzle temperature for the G26 Mesh Validation Tool.
+    #define MESH_TEST_HOTEND_TEMP  215.0  // (°C) Default nozzle temperature for the G26 Mesh Validation Tool.
     #define MESH_TEST_BED_TEMP      60.0  // (°C) Default bed temperature for the G26 Mesh Validation Tool.
   #endif
 
@@ -1172,7 +1173,7 @@
 #define LCD_BED_LEVELING
 
 #if ENABLED(LCD_BED_LEVELING)
-  #define MBL_Z_STEP 0.025    // Step size while manually probing Z axis.
+  #define MBL_Z_STEP 0.002    // Step size while manually probing Z axis.
   #define LCD_PROBE_Z_RANGE 4 // Z Range centered on Z_MIN_POS for LCD Z adjustment
 #endif
 
@@ -1180,8 +1181,8 @@
 #define LEVEL_BED_CORNERS
 
 #if ENABLED(LEVEL_BED_CORNERS)
-  #define LEVEL_CORNERS_INSET 30    // (mm) An inset for corner leveling
-  #define LEVEL_CENTER_TOO        // Move to the center after the last corner
+  #define LEVEL_CORNERS_INSET 5    // (mm) An inset for corner leveling
+  //#define LEVEL_CENTER_TOO        // Move to the center after the last corner
 #endif
 
 /**
