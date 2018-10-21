@@ -618,6 +618,8 @@ void MarlinSettings::postprocess() {
 
       #if ENABLED(Z_TRIPLE_ENDSTOPS)
         EEPROM_WRITE(endstops.z3_endstop_adj);   // 1 float
+      #else
+        EEPROM_WRITE(dummy);
       #endif
 
     #endif
@@ -1219,6 +1221,8 @@ void MarlinSettings::postprocess() {
         #endif
         #if ENABLED(Z_TRIPLE_ENDSTOPS)
           EEPROM_READ(endstops.z3_endstop_adj); // 1 float
+        #else
+          EEPROM_READ(dummy);
         #endif
 
       #endif
