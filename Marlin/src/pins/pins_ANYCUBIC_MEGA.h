@@ -29,7 +29,6 @@
 #endif
 
 // Misc PINs
-#define BUZZER             31
 #define SDPOWER            -1
 #define SDSS               53
 #define LED_PIN            13
@@ -118,7 +117,7 @@
   //#define Y2_HARDWARE_SERIAL Serial1
   //#define Z_HARDWARE_SERIAL  Serial1
   //#define Z2_HARDWARE_SERIAL Serial1
-  //#define E0_HARDWARE_SERIAL Serial1
+  #define E0_HARDWARE_SERIAL Serial3
   //#define E1_HARDWARE_SERIAL Serial1
   //#define E2_HARDWARE_SERIAL Serial1
   //#define E3_HARDWARE_SERIAL Serial1
@@ -128,23 +127,23 @@
    * Software serial
    */
 
-  #define X_SERIAL_TX_PIN    40
-  #define X_SERIAL_RX_PIN    63
+  #define X_SERIAL_TX_PIN    -1
+  #define X_SERIAL_RX_PIN    -1
   #define X2_SERIAL_TX_PIN   -1
   #define X2_SERIAL_RX_PIN   -1
 
-  #define Y_SERIAL_TX_PIN    59
-  #define Y_SERIAL_RX_PIN    64
+  #define Y_SERIAL_TX_PIN    -1
+  #define Y_SERIAL_RX_PIN    -1
   #define Y2_SERIAL_TX_PIN   -1
   #define Y2_SERIAL_RX_PIN   -1
 
-  #define Z_SERIAL_TX_PIN    42
-  #define Z_SERIAL_RX_PIN    65
+  #define Z_SERIAL_TX_PIN    -1
+  #define Z_SERIAL_RX_PIN    -1
   #define Z2_SERIAL_TX_PIN   -1
   #define Z2_SERIAL_RX_PIN   -1
 
-  #define E0_SERIAL_TX_PIN   44
-  #define E0_SERIAL_RX_PIN   66
+  #define E0_SERIAL_TX_PIN   -1
+  #define E0_SERIAL_RX_PIN   -1
   #define E1_SERIAL_TX_PIN   -1
   #define E1_SERIAL_RX_PIN   -1
   #define E2_SERIAL_TX_PIN   -1
