@@ -84,6 +84,7 @@
 #define BOARD_TRIGORILLA_14     443   // TriGorilla Anycubic version 1.4 based on RAMPS EFB
 #define BOARD_RAMPS_ENDER_4     243   // Creality: Ender-4, CR-8
 #define BOARD_FYSETC_F6_13      541   // Fysetc F6
+#define BOARD_ANYCUBIC_MEGA     543   // TriGorilla Anycubic i3 MEGA version 1.4 based on RAMPS EFB
 
 //
 // Other ATmega1280, ATmega2560
