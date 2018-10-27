@@ -607,7 +607,7 @@
 #define Z2_DRIVER_TYPE TMC2208_STANDALONE
 //#define Z3_DRIVER_TYPE A4988
 //#define E0_DRIVER_TYPE TMC2208_STANDALONE
-#define E0_DRIVER_TYPE A4988
+#define E0_DRIVER_TYPE TMC2208
 //#define E1_DRIVER_TYPE A4988
 //#define E2_DRIVER_TYPE A4988
 //#define E3_DRIVER_TYPE A4988
@@ -916,7 +916,7 @@
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR false
+#define INVERT_E0_DIR true
 #define INVERT_E1_DIR false
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
