@@ -552,7 +552,6 @@ static bool do_probe_move(const float z, const float fr_mm_s) {
 
   // Move down until the probe is triggered
   do_blocking_move_to_z(z, fr_mm_s);
-  endstops.not_homing();
 
   // Check to see if the probe was triggered
   const bool probe_triggered =
