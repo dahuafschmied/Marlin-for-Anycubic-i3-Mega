@@ -399,10 +399,10 @@
 
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
-  // my i3 Mega with sock
-  #define DEFAULT_Kp 13.96
-  #define DEFAULT_Ki 0.82
-  #define DEFAULT_Kd 59.16
+  // my i3 Mega with sock (V6 Nozzle)
+  #define DEFAULT_Kp 22.6
+  #define DEFAULT_Ki 1.8
+  #define DEFAULT_Kd 71.7
 
   // Ultimaker
   //#define DEFAULT_Kp 22.2
@@ -1567,7 +1567,7 @@
 //  If CLOCKWISE normally moves DOWN this makes it go UP.
 //  If CLOCKWISE normally moves UP this makes it go DOWN.
 //
-//#define REVERSE_MENU_DIRECTION
+#define REVERSE_MENU_DIRECTION
 
 //
 // Individual Axis Homing
