@@ -1186,7 +1186,8 @@
 #define LEVEL_BED_CORNERS
 
 #if ENABLED(LEVEL_BED_CORNERS)
-  #define LEVEL_CORNERS_INSET 5    // (mm) An inset for corner leveling
+  #define LEVEL_CORNERS_INSET  5    // (mm) An inset for corner leveling
+  #define LEVEL_CORNERS_Z_HOP  4.0  // (mm) Move nozzle up before moving between corners
   //#define LEVEL_CENTER_TOO        // Move to the center after the last corner
 #endif
 
@@ -1728,10 +1729,17 @@
 //
 
 //
-// 2 wire Non-latching LCD SR from https://goo.gl/aJJ4sH
+// 2-wire Non-latching LCD SR from https://goo.gl/aJJ4sH
 // LCD configuration: http://reprap.org/wiki/SAV_3D_LCD
 //
 //#define SAV_3DLCD
+
+//
+// 3-wire SR LCD with strobe using 74HC4094
+// https://github.com/mikeshub/SailfishLCD
+// Uses the code directly from Sailfish
+//
+//#define FF_INTERFACEBOARD
 
 //=============================================================================
 //=======================   LCD / Controller Selection  =======================
@@ -1962,6 +1970,10 @@
 // Support for PCA9632 PWM LED driver
 //#define PCA9632
 
+// Support for PCA9533 PWM LED driver
+// https://github.com/mikeshub/SailfishRGB_LED
+//#define PCA9533
+
 /**
  * RGB LED / LED Strip Control
  *
@@ -2016,7 +2028,7 @@
  *  - Change to green once print has finished
  *  - Turn off after the print has finished and the user has pushed a button
  */
-#if ENABLED(BLINKM) || ENABLED(RGB_LED) || ENABLED(RGBW_LED) || ENABLED(PCA9632) || ENABLED(NEOPIXEL_LED)
+#if ENABLED(BLINKM) || ENABLED(RGB_LED) || ENABLED(RGBW_LED) || ENABLED(PCA9632) || ENABLED(PCA9533)|| ENABLED(NEOPIXEL_LED)
   #define PRINTER_EVENT_LEDS
 #endif
 
