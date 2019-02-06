@@ -156,6 +156,10 @@
   #include "feature/controllerfan.h"
 #endif
 
+#if ENABLED(PRUSA_MMU2)
+  #include "feature/prusa_MMU2/mmu2.h"
+#endif
+
 #if ENABLED(EXTENSIBLE_UI)
   #include "lcd/extensible_ui/ui_api.h"
 #endif
@@ -632,6 +636,10 @@ void idle(
   #if ENABLED(USB_FLASH_DRIVE_SUPPORT)
     Sd2Card::idle();
   #endif
+
+  #if ENABLED(PRUSA_MMU2)
+    mmu2.mmuLoop();
+  #endif
 }
 
 /**
@@ -958,7 +966,13 @@ void setup() {
   #endif
 
   #if ENABLED(SWITCHING_NOZZLE)
-    move_nozzle_servo(0);     // Initialize nozzle servo
+    // Initialize nozzle servo(s)
+    #if SWITCHING_NOZZLE_TWO_SERVOS
+      lower_nozzle(0);
+      raise_nozzle(1);
+    #else
+      move_nozzle_servo(0);
+    #endif
   #endif
 
   #if ENABLED(PARKING_EXTRUDER)
@@ -983,6 +997,10 @@ void setup() {
 
   #if HAS_TRINAMIC && DISABLED(PS_DEFAULT_OFF)
     test_tmc_connection(true, true, true, true);
+  #endif
+
+  #if ENABLED(PRUSA_MMU2)
+    mmu2.init();
   #endif
 }
 

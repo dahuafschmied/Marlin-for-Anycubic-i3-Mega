@@ -86,6 +86,10 @@ void menu_abort_confirm() {
   END_MENU();
 }
 
+#if ENABLED(PRUSA_MMU2)
+  #include "../../feature/prusa_MMU2/mmu2_menu.h"
+#endif
+
 void menu_tune();
 void menu_motion();
 void menu_temperature();
@@ -100,7 +104,12 @@ void menu_main() {
   START_MENU();
   MENU_BACK(MSG_WATCH);
 
-  const bool busy = printer_busy();
+  const bool busy = printer_busy()
+    #if ENABLED(SDSUPPORT)
+      , card_detected = card.isDetected()
+      , card_open = card_detected && card.isFileOpen()
+    #endif
+  ;
 
   if (busy) {
     MENU_ITEM(function, MSG_PAUSE_PRINT, lcd_pause);
@@ -118,8 +127,8 @@ void menu_main() {
         if (!busy) MENU_ITEM(function, MSG_AUTOSTART, card.beginautostart);
       #endif
 
-      if (card.isDetected()) {
-        if (!card.isFileOpen()) {
+      if (card_detected) {
+        if (!card_open) {
           MENU_ITEM(submenu, MSG_CARD_MENU, menu_sdcard);
           #if !PIN_EXISTS(SD_DETECT)
             MENU_ITEM(gcode, MSG_CHANGE_SDCARD, PSTR("M21"));  // SD-card changed by user
@@ -134,10 +143,19 @@ void menu_main() {
       }
     #endif // !HAS_ENCODER_WHEEL && SDSUPPORT
 
-    MENU_ITEM(function, MSG_RESUME_PRINT, lcd_resume);
+    #if ENABLED(SDSUPPORT) || defined(ACTION_ON_RESUME)
+      #if ENABLED(SDSUPPORT)
+        if (card.isFileOpen() && card.isPaused())
+      #endif
+          MENU_ITEM(function, MSG_RESUME_PRINT, lcd_resume);
+    #endif
 
     MENU_ITEM(submenu, MSG_MOTION, menu_motion);
     MENU_ITEM(submenu, MSG_TEMPERATURE, menu_temperature);
+
+    #if ENABLED(MMU2_MENUS)
+      MENU_ITEM(submenu, MSG_MMU2_MENU, menu_mmu2);
+    #endif
   }
 
   MENU_ITEM(submenu, MSG_CONFIGURATION, menu_configuration);
@@ -183,8 +201,8 @@ void menu_main() {
       if (!busy) MENU_ITEM(function, MSG_AUTOSTART, card.beginautostart);
     #endif
 
-    if (card.isDetected()) {
-      if (!card.isFileOpen()) {
+    if (card_detected) {
+      if (!card_open) {
         MENU_ITEM(submenu, MSG_CARD_MENU, menu_sdcard);
         #if !PIN_EXISTS(SD_DETECT)
           MENU_ITEM(gcode, MSG_CHANGE_SDCARD, PSTR("M21"));  // SD-card changed by user
