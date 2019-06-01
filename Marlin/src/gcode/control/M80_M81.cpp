@@ -42,13 +42,7 @@
   #endif
 
   // Could be moved to a feature, but this is all the data
-  bool powersupply_on = (
-    #if ENABLED(PS_DEFAULT_OFF)
-      false
-    #else
-      true
-    #endif
-  );
+  bool powersupply_on;
 
   #if HAS_TRINAMIC
     #include "../../feature/tmc_util.h"
@@ -103,7 +97,7 @@ void GcodeSuite::M81() {
     thermalManager.zero_fan_speeds();
     #if ENABLED(PROBING_FANS_OFF)
       thermalManager.fans_paused = false;
-      ZERO(thermalManager.paused_fan_speed);
+      ZERO(thermalManager.saved_fan_speed);
     #endif
   #endif
 

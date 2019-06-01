@@ -161,11 +161,13 @@
 #elif MB(RAMPS_CREALITY)
   #include "pins_RAMPS_CREALITY.h"    // ATmega2560                                 env:megaatmega2560
 #elif MB(FYSETC_F6_13)
-  #include "pins_FYSETC_F6_13.h"      // ATmega2560                                 env:megaatmega2560
+  #include "pins_FYSETC_F6_13.h"      // ATmega2560                                 env:fysetc_f6_13
 #elif MB(DUPLICATOR_I3_PLUS)
-  #include "pins_DUPLICATOR_I3_PLUS.h" // ATmega2560                                 env:megaatmega2560
+  #include "pins_DUPLICATOR_I3_PLUS.h" // ATmega2560                                env:megaatmega2560
 #elif MB(VORON)
   #include "pins_VORON.h"             // ATmega2560                                 env:megaatmega2560
+#elif MB(TRONXY_V3_1_0)
+  #include "pins_TRONXY_V3_1_0.h"     // ATmega2560                                 env:megaatmega2560
 #elif MB(ANYCUBIC_MEGA)
   #include "pins_ANYCUBIC_MEGA.h"     // ATmega2560                                 env:megaatmega2560
 
@@ -305,37 +307,43 @@
 //
 
 #elif MB(RAMPS_14_RE_ARM_EFB)
-  #include "pins_RAMPS_RE_ARM.h"      // LPC1768                                    env:LPC1768
+  #include "pins_RAMPS_RE_ARM.h"        // LPC1768                                    env:LPC1768
 #elif MB(RAMPS_14_RE_ARM_EEB)
-  #include "pins_RAMPS_RE_ARM.h"      // LPC1768                                    env:LPC1768
+  #include "pins_RAMPS_RE_ARM.h"        // LPC1768                                    env:LPC1768
 #elif MB(RAMPS_14_RE_ARM_EFF)
-  #include "pins_RAMPS_RE_ARM.h"      // LPC1768                                    env:LPC1768
+  #include "pins_RAMPS_RE_ARM.h"        // LPC1768                                    env:LPC1768
 #elif MB(RAMPS_14_RE_ARM_EEF)
-  #include "pins_RAMPS_RE_ARM.h"      // LPC1768                                    env:LPC1768
+  #include "pins_RAMPS_RE_ARM.h"        // LPC1768                                    env:LPC1768
 #elif MB(RAMPS_14_RE_ARM_SF)
-  #include "pins_RAMPS_RE_ARM.h"      // LPC1768                                    env:LPC1768
+  #include "pins_RAMPS_RE_ARM.h"        // LPC1768                                    env:LPC1768
 #elif MB(MKS_SBASE)
-  #include "pins_MKS_SBASE.h"         // LPC1768                                    env:LPC1768
+  #include "pins_MKS_SBASE.h"           // LPC1768                                    env:LPC1768
+#elif MB(MKS_SGEN)
+  #include "pins_MKS_SGEN.h"            // LPC1769                                    env:LPC1769
 #elif MB(AZSMZ_MINI)
-  #include "pins_AZSMZ_MINI.h"        // LPC1768                                    env:LPC1768
+  #include "pins_AZSMZ_MINI.h"          // LPC1768                                    env:LPC1768
 #elif MB(AZTEEG_X5_GT)
-  #include "pins_AZTEEG_X5_GT.h"      // LPC1769                                    env:LPC1769
+  #include "pins_AZTEEG_X5_GT.h"        // LPC1769                                    env:LPC1769
+#elif MB(AZTEEG_X5_MINI)
+  #include "pins_AZTEEG_X5_MINI.h"      // LPC1769                                    env:LPC1769
 #elif MB(AZTEEG_X5_MINI_WIFI)
-  #include "pins_AZTEEG_X5_MINI_WIFI.h" // LPC1769                                  env:LPC1769
+  #include "pins_AZTEEG_X5_MINI_WIFI.h" // LPC1769                                    env:LPC1769
 #elif MB(BIQU_BQ111_A4)
-  #include "pins_BIQU_BQ111_A4.h"     // LPC1768                                    env:LPC1768
+  #include "pins_BIQU_BQ111_A4.h"       // LPC1768                                    env:LPC1768
 #elif MB(SELENA_COMPACT)
-  #include "pins_SELENA_COMPACT.h"    // LPC1768                                    env:LPC1768
+  #include "pins_SELENA_COMPACT.h"      // LPC1768                                    env:LPC1768
 #elif MB(COHESION3D_REMIX)
-  #include "pins_COHESION3D_REMIX.h"  // LPC1769                                    env:LPC1769
+  #include "pins_COHESION3D_REMIX.h"    // LPC1769                                    env:LPC1769
 #elif MB(COHESION3D_MINI)
-  #include "pins_COHESION3D_MINI.h"   // LPC1769                                    env:LPC1769
+  #include "pins_COHESION3D_MINI.h"     // LPC1769                                    env:LPC1769
 #elif MB(SMOOTHIEBOARD)
-  #include "pins_SMOOTHIEBOARD.h"     // LPC1769                                    env:LPC1769
+  #include "pins_SMOOTHIEBOARD.h"       // LPC1769                                    env:LPC1769
 #elif MB(BIQU_SKR_V1_1)
-  #include "pins_BIQU_SKR_V1.1.h"     // LPC1768                                    env:LPC1768
+  #include "pins_BIQU_SKR_V1.1.h"       // LPC1768                                    env:LPC1768
 #elif MB(BIQU_B300_V1_0)
-  #include "pins_BIQU_B300_V1.0.h"    // LPC1768                                    env:LPC1768
+  #include "pins_BIQU_B300_V1.0.h"      // LPC1768                                    env:LPC1768
+#elif MB(BIGTREE_SKR_V1_3)
+  #include "pins_BIGTREE_SKR_V1.3.h"    // LPC1768                                    env:LPC1768
 
 //
 // Other 32-bit Boards
@@ -395,6 +403,8 @@
   #include "pins_ALLIGATOR_R2.h"      // SAM3X8E                                    env:DUE env:DUE_debug
 #elif MB(ADSK)
   #include "pins_ADSK.h"              // SAM3X8E                                    env:DUE env:DUE_debug
+#elif MB(PRINTRBOARD_G2)
+  #include "pins_PRINTRBOARD_G2.h"    // SAM3X8C                                    env:DUE_USB
 
 //
 // STM32 ARM Cortex-M3
@@ -413,7 +423,7 @@
 #elif MB(MORPHEUS)
   #include "pins_MORPHEUS.h"          // STM32F1                                    env:STM32F1
 #elif MB(MKS_ROBIN)
-  #include "pins_MKS_ROBIN.h"         // STM32F1                                    env:STM32F1
+  #include "pins_MKS_ROBIN.h"         // STM32F1                                    env:mks_robin
 
 //
 // STM32 ARM Cortex-M4F
@@ -431,8 +441,12 @@
   #include "pins_ARMED.h"             // STM32F4                                    env:ARMED
 #elif MB(RUMBA32)
   #include "pins_RUMBA32.h"           // STM32F4                                    env:RUMBA32
+#elif MB(BLACK_STM32F407VE)
+  #include "pins_BLACK_STM32F407VE.h" // STM32F4                                    env:black_stm32f407ve
 #elif MB(STEVAL)
   #include "pins_STEVAL.h"            // STM32F4                                    env:STM32F4
+
+
 
 //
 // ARM Cortex M7
@@ -448,7 +462,14 @@
 //
 
 #elif MB(ESP32)
-  #include "pins_ESP32.h"
+  #include "pins_ESP32.h"             // ESP32                                      env:esp32
+
+//
+// Linux Native Debug board
+//
+
+#elif MB(LINUX_RAMPS)
+  #include "pins_RAMPS_LINUX.h"       // Linux                                      env:linux_native
 
 #else
   #error "Unknown MOTHERBOARD value set in Configuration.h"
@@ -803,7 +824,7 @@
 //
 // Disable unused endstop / probe pins
 //
-#if !HAS_BED_PROBE || DISABLED(Z_MIN_PROBE_ENDSTOP)
+#if !USES_Z_MIN_PROBE_ENDSTOP
   #undef Z_MIN_PROBE_PIN
   #define Z_MIN_PROBE_PIN    -1
 #endif
@@ -863,7 +884,7 @@
 #define _EPIN(p,q) __EPIN(p,q)
 
 // The X2 axis, if any, should be the next open extruder port
-#if ENABLED(DUAL_X_CARRIAGE) || ENABLED(X_DUAL_STEPPER_DRIVERS)
+#if EITHER(DUAL_X_CARRIAGE, X_DUAL_STEPPER_DRIVERS)
   #ifndef X2_STEP_PIN
     #define X2_STEP_PIN   _EPIN(E_STEPPERS, STEP)
     #define X2_DIR_PIN    _EPIN(E_STEPPERS, DIR)
