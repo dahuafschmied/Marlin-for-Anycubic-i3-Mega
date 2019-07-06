@@ -19,7 +19,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-//#pragma once
+#pragma once
 
 // Use NUM_ARGS(__VA_ARGS__) to get the number of variadic arguments
 #define _NUM_ARGS(_0,_24_,_23,_22,_21,_20,_19,_18,_17,_16,_15,_14,_13,_12,_11,_10,_9,_8,_7,_6,_5,_4,_3,_2,_1,N,...) N
@@ -59,7 +59,7 @@
   #define MIN_10(a,...)   MIN_2(a,MIN_9(__VA_ARGS__))
   #define __MIN_N(N, ...) MIN_##N(__VA_ARGS__)
   #define _MIN_N(N, ...)  __MIN_N(N,__VA_ARGS__)
-  #define MIN(...)        _MIN_N(NUM_ARGS(__VA_ARGS__), __VA_ARGS__)
+  #define _MIN(...)        _MIN_N(NUM_ARGS(__VA_ARGS__), __VA_ARGS__)
 
   #define MAX_2(a,b)      ((a)>(b)?(a):(b))
   #define MAX_3(a,...)    MAX_2(a,MAX_2(__VA_ARGS__))
@@ -72,6 +72,6 @@
   #define MAX_10(a,...)   MAX_2(a,MAX_9(__VA_ARGS__))
   #define __MAX_N(N, ...) MAX_##N(__VA_ARGS__)
   #define _MAX_N(N, ...)  __MAX_N(N,__VA_ARGS__)
-  #define MAX(...)        _MAX_N(NUM_ARGS(__VA_ARGS__), __VA_ARGS__)
+  #define _MAX(...)        _MAX_N(NUM_ARGS(__VA_ARGS__), __VA_ARGS__)
 
 #endif
