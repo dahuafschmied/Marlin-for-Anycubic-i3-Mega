@@ -518,7 +518,7 @@
 #define Y_HOME_BUMP_MM 5
 #define Z_HOME_BUMP_MM 2
 #define HOMING_BUMP_DIVISOR { 2, 2, 4 }  // Re-Bump Speed Divisor (Divides the Homing Feedrate)
-//#define QUICK_HOME                     // If homing includes X and Y, do a diagonal move initially
+#define QUICK_HOME                       // If homing includes X and Y, do a diagonal move initially
 //#define HOMING_BACKOFF_MM { 2, 2, 2 }  // (mm) Move away from the endstops after homing
 
 // When G28 is called, this option will make Y home before X
@@ -1419,20 +1419,20 @@
  * Note that M207 / M208 / M209 settings are saved to EEPROM.
  *
  */
-//#define FWRETRACT
+#define FWRETRACT
 #if ENABLED(FWRETRACT)
   #define FWRETRACT_AUTORETRACT           // costs ~500 bytes of PROGMEM
   #if ENABLED(FWRETRACT_AUTORETRACT)
     #define MIN_AUTORETRACT 0.1           // When auto-retract is on, convert E moves of this length and over
     #define MAX_AUTORETRACT 10.0          // Upper limit for auto-retract conversion
   #endif
-  #define RETRACT_LENGTH 3                // Default retract length (positive mm)
+  #define RETRACT_LENGTH 5                // Default retract length (positive mm)
   #define RETRACT_LENGTH_SWAP 13          // Default swap retract length (positive mm), for extruder change
-  #define RETRACT_FEEDRATE 45             // Default feedrate for retracting (mm/s)
+  #define RETRACT_FEEDRATE 35             // Default feedrate for retracting (mm/s)
   #define RETRACT_ZRAISE 0                // Default retract Z-raise (mm)
   #define RETRACT_RECOVER_LENGTH 0        // Default additional recover length (mm, added to retract length when recovering)
   #define RETRACT_RECOVER_LENGTH_SWAP 0   // Default additional swap recover length (mm, added to retract length when recovering from extruder change)
-  #define RETRACT_RECOVER_FEEDRATE 8      // Default feedrate for recovering from retraction (mm/s)
+  #define RETRACT_RECOVER_FEEDRATE 35     // Default feedrate for recovering from retraction (mm/s)
   #define RETRACT_RECOVER_FEEDRATE_SWAP 8 // Default feedrate for recovering from swap retraction (mm/s)
   #if ENABLED(MIXING_EXTRUDER)
     //#define RETRACT_SYNC_MIXING         // Retract and restore all mixing steppers simultaneously
