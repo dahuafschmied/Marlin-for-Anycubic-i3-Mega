@@ -900,7 +900,7 @@
  *
  * Specify a Probe position as { X, Y, Z }
  */
-#define NOZZLE_TO_PROBE_OFFSET { -25, 20, -1,73 }
+#define NOZZLE_TO_PROBE_OFFSET { -25, 20, -1.73 }
 
 // Certain types of probes need to stay away from edges
 #define MIN_PROBE_EDGE 26
@@ -1416,7 +1416,7 @@
 
 // Preheat Constants
 #define PREHEAT_1_LABEL       "PLA"
-#define PREHEAT_1_TEMP_HOTEND 215
+#define PREHEAT_1_TEMP_HOTEND 200
 #define PREHEAT_1_TEMP_BED     60
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
 
