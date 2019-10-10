@@ -758,10 +758,10 @@
  * value set here, it may happen instantaneously.
  */
 
-//#define CLASSIC_JERK
+#define CLASSIC_JERK
 #if ENABLED(CLASSIC_JERK)
-  #define DEFAULT_XJERK 10.0
-  #define DEFAULT_YJERK 10.0
+  #define DEFAULT_XJERK 15.0
+  #define DEFAULT_YJERK 15.0
   #define DEFAULT_ZJERK  0.3
 
   //#define LIMITED_JERK_EDITING        // Limit edit via M205 or LCD to DEFAULT_aJERK * 2
@@ -780,7 +780,7 @@
  *   http://blog.kyneticcnc.com/2018/10/computing-junction-deviation-for-marlin.html
  */
 #if DISABLED(CLASSIC_JERK)
-  #define JUNCTION_DEVIATION_MM 0.15  // (mm) Distance from real junction edge
+  #define JUNCTION_DEVIATION_MM 0.06  // (mm) Distance from real junction edge
 #endif
 
 /**
