@@ -762,8 +762,8 @@
 
 //#define CLASSIC_JERK
 #if ENABLED(CLASSIC_JERK)
-  #define DEFAULT_XJERK 15.0
-  #define DEFAULT_YJERK 15.0
+  #define DEFAULT_XJERK 10.0
+  #define DEFAULT_YJERK 10.0
   #define DEFAULT_ZJERK  0.3
 
   //#define LIMITED_JERK_EDITING        // Limit edit via M205 or LCD to DEFAULT_aJERK * 2
@@ -925,7 +925,7 @@
 #define NOZZLE_TO_PROBE_OFFSET { -25, 20, -1.80 }
 
 // Certain types of probes need to stay away from edges
-#define MIN_PROBE_EDGE 26
+#define MIN_PROBE_EDGE 10
 
 // X and Y axis travel speed (mm/m) between probes
 #define XY_PROBE_SPEED 9600
