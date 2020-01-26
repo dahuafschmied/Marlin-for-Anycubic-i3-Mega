@@ -16,15 +16,15 @@ jobs:
 
     steps:
 
-    - name: Check out bugfix-2.0.x
+    - name: Check out bugfix-2.0.x-SKR
       uses: actions/checkout@v2
       with:
-        ref: bugfix-2.0.x
+        ref: bugfix-2.0.x-SKR
 
     - name: Bump Distribution Date
       run: |
         # Inline Bump Script
-        [[ "$GITHUB_REPOSITORY" == "MarlinFirmware/Marlin" ]] || exit 0
+        [[ "$GITHUB_REPOSITORY" == "dahuafschmied/myMarlin2" ]] || exit 0
         DIST=$( date +"%Y-%m-%d" )
         eval "sed -E -i 's/(#define +STRING_DISTRIBUTION_DATE) .*$/\1 \"$DIST\"/g' Marlin/src/inc/Version.h" && \
         git config user.name "${GITHUB_ACTOR}" && \
